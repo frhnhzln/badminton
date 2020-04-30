@@ -75,30 +75,56 @@ if(isset($_GET["id"]))
 <body>
 <?php
 
+$student_id =  19;
+//   echo "Select * FROM bookings WHERE car_id = $id AND  student_id = $student_id"; 
+$id=$_GET["id"];
+$getBookingDetail = "Select * FROM bookings WHERE car_id = ".$id." AND  student_id = ".$student_id."";
+$bookDetail = mysqli_query($conn, $getBookingDetail);
+$book = mysqli_fetch_assoc($bookDetail);
+
+
+
 if(isset($_POST['submit']))
 {
 	
 	//$id = $_POST['id'];
-	$student_id = $_POST["student_id"];
-	$car_id = $id;
-	$start_date =$_POST['start_date'];
-	$end_date =$_POST['end_date'];
+	$student_id = 19;
+	$car_id = $_POST['id'];
+	$booking_id = $_POST['booking_id'];
+	 $start_date =$_POST['start_date'];
+	 $end_date =$_POST['end_date']; 
 	$start_time =$_POST['start_time'];
 	$end_time =$_POST['end_time'];
+	$booking_fee= $_POST['booking_fee'];
 	//$book_duration = $_POST['book_duration'];
+
+
+	$query = "UPDATE bookings SET `student_id` = $student_id, `car_id` = $car_id, `start_date` = '".$start_date."', `end_date` = '".$end_date."', `start_time` = '".$start_time."', `end_time` = '".$end_time."', `booking_fee` = $booking_fee, `booking_payment`= 'paid' WHERE `car_id` = $car_id AND `booking_id` = $booking_id AND `student_id` = $student_id";
+
 	
-	$query =  "INSERT INTO bookings (student_id, car_id, start_date, end_date, start_time, end_time) 
-		VALUES ('$student_id', '$car_id', '$start_date', '$end_date', '$start_time', '$end_time')";
-		
+
+		$lastUpdatedId = $booking_id;
+
+		$percentToGetOwner = 90;
+		$percentInOwner = $percentToGetOwner / 100;
+		$owner_rate = $percentInOwner * $booking_fee; 
+
+		$percentToGetAdmin = 10;
+		$percentInAdmin = $percentToGetAdmin / 100;
+		$admin_rate = $percentInAdmin * $booking_fee;
+
+		$query = "INSERT INTO payment (booking_id, student_id, car_id, total_rate, owner_rate, admin_rate) 
+		VALUES ('$lastUpdatedId', '$student_id', '$car_id', '$booking_fee', '$owner_rate', '$admin_rate')";
+	
 		$result = mysqli_query($conn,$query);
 	
 		if(!$result)
 		{
-			echo "Insert Failed";
+			echo "Update Failed";
 		}else
 		{
-			echo "<script> alert('Successfully added!')</script>";
-			echo "<script>window.open('cimbclicks/login.php','_self')</script>";
+			echo "<script> alert('Successfully Updated!')</script>";
+			echo "<script>window.location = 'confirmbooking.php?booking_id=$lastUpdatedId';</script>";
 		}
 }
 
@@ -110,26 +136,31 @@ if(isset($_POST['submit']))
 		
 			
 <br><br>
-<input type="text" class="form-control" name="student_id" value="<?php echo $_SESSION['student_id']; ?>">
-<input type="text" class="form-control" name="id" value="<?php echo $id; ?>">
+<input type="hidden" class="form-control" name="student_id" value="<?php echo $_SESSION['student_id']; ?>">
+<input type="hidden" class="form-control" name="id" value="<?php echo $id; ?>">
+<input type="hidden" class="form-control" name="booking_id" value="<?php echo $book['booking_id']; ?>">
 <table id="example" class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Start Time</th>
-		<th>End Time</th>
-		<th>Duration</th>
-		<th>Booking Fee</th>
-		
+				<th>End Time</th>
+				<th>Duration</th>
+				<th>Booking Fee</th>				
             </tr>
         </thead>
         <tbody>
 		<tr>
-			<td><input type="text" class="form-control" name="start_date" value="<?php echo $_SESSION['start_date']; ?>"></td>
-			<td><input type="text" class="form-control" name="end_date" value="<?php echo $_SESSION['end_date']; ?>"></td>
-			<td><input type="text" class="form-control" name="start_time" value="<?php echo $_SESSION['start_time']; ?>"></td>
-			<td><input type="text" class="form-control" name="end_time" value="<?php echo $_SESSION['end_time']; ?>"></td>
+			<!-- <td><input type="text" class="form-control" name="start_date" value="<?php //echo $_SESSION['start_date']; ?>"></td>
+			<td><input type="text" class="form-control" name="end_date" value="<?php //echo $_SESSION['end_date']; ?>"></td>
+			<td><input type="text" class="form-control" name="start_time" value="<?php //echo $_SESSION['start_time']; ?>"></td>
+			<td><input type="text" class="form-control" name="end_time" value="<?php //echo $_SESSION['end_time']; ?>"></td> -->
+			<td><input type="text" class="form-control" name="start_date" value="<?php echo $book['start_date']; ?>"></td>
+			<td><input type="text" class="form-control" name="end_date" value="<?php echo $book['end_date']; ?>"></td>
+			<td><input type="text" class="form-control" name="start_time" value="<?php echo $book['start_time']; ?>"></td>
+			<td><input type="text" class="form-control" name="end_time" value="<?php echo $book['end_time']; ?>"></td>
+
 			
 		</tr>
 		<?php
@@ -155,58 +186,53 @@ if(isset($_POST['submit']))
 </table>
 
 <div class="card-body">
-                                        <a class="btn btn-danger" href="index.php" role="button">Edit Details</a>
-                                       
-                                    </div>
+	<a class="btn btn-danger" href="index.php?car_id=<?php echo $id; ?>&student_id=19; ?>" role="button">Edit Details</a>	
+</div>
 
 <br>
 <br>
+<input type="hidden" class="form-control" name="booking_fee" value="<?php echo $row["rate"]; ?>">
 <table id="example" class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Car Image</th>
-                <th>Car Name</th>
-                <th>Seat Number</th>
-		<th>Car Colour</th>
-		<th>Car Booking Rate</th>
-		<th>Car Year Made</th>
-		<th>Car Description</th>
-            </tr>
-        </thead>
-        <tbody>
-		<?php
+
+	<thead>
+		<tr>
+			<th>Car Image</th>
+			<th>Car Name</th>
+			<th>Seat Number</th>
+			<th>Car Colour</th>
+			<th>Car Booking Rate</th>
+			<th>Car Year Made</th>
+			<th>Car Description</th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php		
+		echo "<tr>";
+		echo "<td>" . "<img src='image/cars/".$row['image']."' width ='200' height = '200'>". "</td>";
+		echo "<td>" . $row["name"] . "</td>";
+		echo "<td>" . $row["seat"] . "</td>";
+		echo "<td>" . $row["colour"] . "</td>";
+		echo "<td>" . $row["rate"] . "</td>";
+		echo "<td>" . $row["year"] . "</td>";
+		echo "<td>" . $row["info"] . "</td>";
 		
-				echo "<tr>";
-				echo "<td>" . "<img src='image/cars/".$row['image']."' width ='200' height = '200'>". "</td>";
-				echo "<td>" . $row["name"] . "</td>";
-				echo "<td>" . $row["seat"] . "</td>";
-				echo "<td>" . $row["colour"] . "</td>";
-				echo "<td>" . $row["rate"] . "</td>";
-				echo "<td>" . $row["year"] . "</td>";
-				echo "<td>" . $row["info"] . "</td>";
-				
-				
-					
+	?>
 		
-		?>
-		
-		</tbody>
+	</tbody>
 </table>
 				
 <div class="card-body">
-                                        <a class="btn btn-danger" href="carlists.php" role="button">Change Car</a>
-                                       
-                                    </div>
-
+	<a class="btn btn-danger" href="carlists.php" role="button">Change Car</a>	
+</div>
 
 <br>
 
 <div>
-                                                <button id="payment-button" type="submit" name="submit" class="btn btn-lg btn-info btn-block">
-                                                    <i class="fa fa-lock fa-lg"></i>&nbsp;
-                                                    <span id="payment-button-amount">Pay for Booking</span>
-                                                    <span id="payment-button-sending" style="display:none;">Sending…</span>
-                                                </button>
-                                            </div>
+	<button id="payment-button" type="submit" name="submit" class="btn btn-lg btn-info btn-block">
+		<i class="fa fa-lock fa-lg"></i>&nbsp;
+		<span id="payment-button-amount">Pay for Booking</span>
+		<span id="payment-button-sending" style="display:none;">Sending…</span>
+	</button>
+</div>
 </form>
 </body>							

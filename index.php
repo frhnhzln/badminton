@@ -1,9 +1,41 @@
 <?php
 include("dbconn.php");
 session_start();
-//$student_id=$_SESSION['student_id'];
-?>
 
+$stu_id = isset($_GET['student_id']) ? $_GET['student_id'] : '';
+$car_id =  isset($_GET['car_id']) ? $_GET['car_id'] : ''; 
+
+if(isset($_POST['submit']))
+{
+		$student_id = $_POST['student_id']; 
+		$car_id = $_POST['car_id'];  
+		$start_date =$_POST['start_date'];
+		$end_date =$_POST['end_date'];
+		$start_time =$_POST['start_time'];
+		$end_time =$_POST['end_time']; 
+	//$book_duration = $_POST['book_duration'];
+	
+	$query =  "INSERT INTO bookings (student_id, car_id, start_date, end_date, start_time, end_time) 
+		VALUES ('$student_id', '$car_id', '$start_date', '$end_date', '$start_time', '$end_time')";
+		
+		$result = mysqli_query($conn,$query);
+	
+		if(!$result)
+		{
+			echo "Insert Failed";
+		}else
+		{
+			echo "<script> alert('Successfully added!')</script>";
+			echo "<script> alert('Choose the car that you wish to book!')</script>";
+			echo "<script>window.location = 'carlists.php';</script>";
+		}
+}
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -172,18 +204,22 @@ body {
 				<center>	
 			<strong>Reminder!</strong> <br>
 			Payment must be made to book the car. </center>
+			<?php 
+					
+				// $getDetail = "SELECT * FROM bookings WHERE car_id = ".$car_id." AND student_id = ".$stu_id."";
+				// $result = mysqli_query($conn, $getDetail);
+				// $row = mysqli_fetch_assoc($result);
+			?>
 			<div class="card-body card-block">
-				<form action="index.php" method="post" enctype="multipart/form-data" class="form-horizontal" >
-								
-								
-								
-								
+				<form action="index.php" method="post" enctype="multipart/form-data" class="form-horizontal">					
+					<input type="hidden" name="student_id" value="<?php echo $stu_id; ?>">
+					<input type="hidden" name="car_id" value="<?php echo $car_id; ?>">
 					<div class="row form-group">
 						<div class="col col-md-4">
 							<label  class=" form-control-label">Start Booking Date</label>
 						</div>
 						<div class="col-13 col-md-8">
-							<input type="date" id="start_date" name="start_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>">
+							<input type="date" id="start_date" name="start_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>" >
 						</div>
 						</div>
 
@@ -191,7 +227,7 @@ body {
 							<label  class=" form-control-label">End Booking Date</label>
 						</div>
 						<div class="col-13 col-md-8">
-							<input type="date" id="end_date" name="end_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>">
+							<input type="date" id="end_date" name="end_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>" >
 						</div>
 						</div>
 						
@@ -210,22 +246,16 @@ body {
 							<label  class=" form-control-label">End Time</label>
 						</div>
 						<div class="col-13 col-md-8">
-							<input type="time" id="end_time" name="end_time" placeholder="Time" class="form-control" required>
+							<input type="time" id="end_time" name="end_time" placeholder="Time" class="form-control" required >
 						</div>
 						</div>
-						
-						
-						
-						
-						
-					
-					 <button type="submit"  class="btn btn-primary btn-sm" value="submit " name="submit"> 
+										
+					 	<button type="submit"  class="btn btn-primary btn-sm" value="submit " name="submit"> 
 						<i class="fa fa-dot-circle-o"></i> Submit</button>                                      
-				</div>	
-			
-									</form>
+					</div>
+				</form>
 									
-    </div>
+    					</div>
                     </div>
                 </div>
             </div>
@@ -310,25 +340,25 @@ $seconds = floor(($diff - $years * 365*60*60*24
 	//$book_duration = round(abs($end_time - $start_time) / 3600,2);
 	
 
-	if(isset($_POST['submit']))
-	{
-		$_SESSION['start_date'] = $_POST['start_date'];
-		$_SESSION['end_date'] = $_POST['end_date'];
-		$_SESSION['start_time'] = $_POST['start_time'];
-		$_SESSION['end_time'] = $_POST['end_time'];
-		//$_SESSION['hours'] = $_POST['hours'];
+	// if(isset($_POST['submit']))
+	// {
+	// 	$_SESSION['start_date'] = $_POST['start_date'];
+	// 	$_SESSION['end_date'] = $_POST['end_date'];
+	// 	$_SESSION['start_time'] = $_POST['start_time'];
+	// 	$_SESSION['end_time'] = $_POST['end_time'];
+	// 	//$_SESSION['hours'] = $_POST['hours'];
 	
 		
        
-		{
-			echo "<script> alert('Choose the car that you wish to book!')</script>";
-			echo "<script>window.open('carlists.php','_self')</script>";
-		}
-		{
-			{
-			echo "<script> alert('Failed to find cars!')</script>";
+	// 	{
+	// 		echo "<script> alert('Choose the car that you wish to book!')</script>";
+	// 		echo "<script>window.open('carlists.php','_self')</script>";
+	// 	}
+	// 	{
+	// 		{
+	// 		echo "<script> alert('Failed to find cars!')</script>";
 
-           }
-    }
-	}
+    //        }
+    // 	}
+	// }
 	?>
