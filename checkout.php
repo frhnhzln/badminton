@@ -101,7 +101,7 @@ if(isset($_POST['submit']))
 
 	$query = "UPDATE bookings SET `student_id` = $student_id, `car_id` = $car_id, `start_date` = '".$start_date."', `end_date` = '".$end_date."', `start_time` = '".$start_time."', `end_time` = '".$end_time."', `booking_fee` = $booking_fee, `booking_payment`= 'paid' WHERE `car_id` = $car_id AND `booking_id` = $booking_id AND `student_id` = $student_id";
 
-	
+	$res = mysqli_query($conn,$query);
 
 		$lastUpdatedId = $booking_id;
 
@@ -113,10 +113,10 @@ if(isset($_POST['submit']))
 		$percentInAdmin = $percentToGetAdmin / 100;
 		$admin_rate = $percentInAdmin * $booking_fee;
 
-		$query = "INSERT INTO payment (booking_id, student_id, car_id, total_rate, owner_rate, admin_rate) 
+		$payment = "INSERT INTO payment (booking_id, student_id, car_id, total_rate, owner_rate, admin_rate) 
 		VALUES ('$lastUpdatedId', '$student_id', '$car_id', '$booking_fee', '$owner_rate', '$admin_rate')";
 	
-		$result = mysqli_query($conn,$query);
+		$result = mysqli_query($conn,$payment);
 	
 		if(!$result)
 		{
@@ -186,7 +186,7 @@ if(isset($_POST['submit']))
 </table>
 
 <div class="card-body">
-	<a class="btn btn-danger" href="index.php?car_id=<?php echo $id; ?>&student_id=19; ?>" role="button">Edit Details</a>	
+	<a class="btn btn-danger" href="index.php?car_id=<?php echo $id; ?>&student_id=19" role="button">Edit Details</a>	
 </div>
 
 <br>

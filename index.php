@@ -205,10 +205,14 @@ body {
 			<strong>Reminder!</strong> <br>
 			Payment must be made to book the car. </center>
 			<?php 
+				if($stu_id != '' && $car_id != ''){
 					
-				// $getDetail = "SELECT * FROM bookings WHERE car_id = ".$car_id." AND student_id = ".$stu_id."";
-				// $result = mysqli_query($conn, $getDetail);
-				// $row = mysqli_fetch_assoc($result);
+					$getDetail = "SELECT * FROM bookings WHERE car_id = ".$car_id." AND student_id = ".$stu_id."";
+					$result = mysqli_query($conn, $getDetail);
+					$row = mysqli_fetch_assoc($result);
+					$start_date = date('m-d-Y', strtotime($row['start_date']));
+					$end_date = date('m-d-Y', strtotime($row['end_date']));
+				}
 			?>
 			<div class="card-body card-block">
 				<form action="index.php" method="post" enctype="multipart/form-data" class="form-horizontal">					
@@ -219,7 +223,7 @@ body {
 							<label  class=" form-control-label">Start Booking Date</label>
 						</div>
 						<div class="col-13 col-md-8">
-							<input type="date" id="start_date" name="start_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>" >
+							<input type="date" id="start_date" name="start_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>" value="<?php echo $row['start_date']; ?>">
 						</div>
 						</div>
 
@@ -227,7 +231,7 @@ body {
 							<label  class=" form-control-label">End Booking Date</label>
 						</div>
 						<div class="col-13 col-md-8">
-							<input type="date" id="end_date" name="end_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>" >
+							<input type="date" id="end_date" name="end_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>" value="<?php echo $row['end_date']; ?>">
 						</div>
 						</div>
 						
@@ -236,8 +240,9 @@ body {
 						<div class="col col-md-4">
 							<label  class=" form-control-label">Start Time</label>
 						</div>
+					
 						<div class="col-13 col-md-8">
-							<input type="time" id="start_time" name="start_time" placeholder="Time" class="form-control" required>
+							<input type="time" id="start_time" name="start_time" placeholder="Time" class="form-control" required value="<?php $date = date("H:i", strtotime($row['start_time'])); if(isset($date)) { echo $date; } else { echo ''; } ?>">
 						</div>
 						</div>
 
@@ -245,8 +250,9 @@ body {
 						<div class="col col-md-4">
 							<label  class=" form-control-label">End Time</label>
 						</div>
+						
 						<div class="col-13 col-md-8">
-							<input type="time" id="end_time" name="end_time" placeholder="Time" class="form-control" required >
+							<input type="time" id="end_time" name="end_time" placeholder="Time" class="form-control" required value="<?php $date = date("H:i", strtotime($row['end_time'])); if(isset($date)) { echo $date; } else { echo ''; } ?>">
 						</div>
 						</div>
 										
