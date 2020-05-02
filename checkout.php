@@ -152,14 +152,19 @@ if(isset($_POST['submit']))
         </thead>
         <tbody>
 		<tr>
-			<!-- <td><input type="text" class="form-control" name="start_date" value="<?php //echo $_SESSION['start_date']; ?>"></td>
-			<td><input type="text" class="form-control" name="end_date" value="<?php //echo $_SESSION['end_date']; ?>"></td>
-			<td><input type="text" class="form-control" name="start_time" value="<?php //echo $_SESSION['start_time']; ?>"></td>
-			<td><input type="text" class="form-control" name="end_time" value="<?php //echo $_SESSION['end_time']; ?>"></td> -->
-			<td><input type="text" class="form-control" name="start_date" value="<?php echo $book['start_date']; ?>"></td>
-			<td><input type="text" class="form-control" name="end_date" value="<?php echo $book['end_date']; ?>"></td>
-			<td><input type="text" class="form-control" name="start_time" value="<?php echo $book['start_time']; ?>"></td>
-			<td><input type="text" class="form-control" name="end_time" value="<?php echo $book['end_time']; ?>"></td>
+		<?php 
+		
+		
+		?>
+			<td><input type="text" class="form-control" name="start_date" value="<?php if(isset( $_SESSION['st_date'])) { echo $_SESSION['st_date']; } ?>"></td>
+			<td><input type="text" class="form-control" name="end_date" value="<?php if(isset($_SESSION['en_date'])){ echo $_SESSION['en_date']; } ?>"></td>
+			<td><input type="text" class="form-control" name="start_time" value="<?php if(isset($_SESSION['st_time'])){ echo $_SESSION['st_time']; } ?>"></td>
+			<td><input type="text" class="form-control" name="end_time" value="<?php if(isset($_SESSION['en_time'])){ echo $_SESSION['en_time']; } ?>"></td>
+
+			<!-- <td><input type="text" class="form-control" name="start_date" value="<?php //echo $book['start_date']; ?>"></td>
+			<td><input type="text" class="form-control" name="end_date" value="<?php //echo $book['end_date']; ?>"></td>
+			<td><input type="text" class="form-control" name="start_time" value="<?php //echo $book['start_time']; ?>"></td>
+			<td><input type="text" class="form-control" name="end_time" value="<?php //echo $book['end_time']; ?>"></td> -->
 
 			
 		</tr>
@@ -186,7 +191,7 @@ if(isset($_POST['submit']))
 </table>
 
 <div class="card-body">
-	<a class="btn btn-danger" href="index.php?car_id=<?php echo $id; ?>&student_id=19" role="button">Edit Details</a>	
+	<a class="btn btn-danger" href="index.php?car_id=<?php echo $id; ?>&student_id=19" role="button">Add Booking</a>	
 </div>
 
 <br>

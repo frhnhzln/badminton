@@ -5,34 +5,45 @@ session_start();
 $stu_id = isset($_GET['student_id']) ? $_GET['student_id'] : '';
 $car_id =  isset($_GET['car_id']) ? $_GET['car_id'] : ''; 
 
-if(isset($_POST['submit']))
-{
-		$student_id = $_POST['student_id']; 
-		$car_id = $_POST['car_id'];  
-		$start_date =$_POST['start_date'];
-		$end_date =$_POST['end_date'];
-		$start_time =$_POST['start_time'];
-		$end_time =$_POST['end_time']; 
-	//$book_duration = $_POST['book_duration'];
+
 	
-	$query =  "INSERT INTO bookings (student_id, car_id, start_date, end_date, start_time, end_time) 
-		VALUES ('$student_id', '$car_id', '$start_date', '$end_date', '$start_time', '$end_time')";
+	if (isset($_POST['submit'])) {
+
+		if($_POST['student_id'] != '' && $_POST['car_id'] != ''){
+	
+			$student_id = $_POST['student_id']; 
+			$car_id = $_POST['car_id'];  
+			$start_date =$_POST['start_date'];
+			$end_date =$_POST['end_date'];
+			$start_time =$_POST['start_time'];
+			$end_time =$_POST['end_time']; 
+		//$book_duration = $_POST['book_duration'];
 		
-		$result = mysqli_query($conn,$query);
+		$query =  "INSERT INTO bookings (student_id, car_id, start_date, end_date, start_time, end_time) 
+			VALUES ('$student_id', '$car_id', '$start_date', '$end_date', '$start_time', '$end_time')";
+			
+			$result = mysqli_query($conn,$query);
+		
+			if(!$result)
+			{
+				echo "Insert Failed";
+			}else
+			{
+				echo "<script> alert('Successfully added!')</script>";
+				echo "<script> alert('Choose the car that you wish to book!')</script>";
+				echo "<script>window.location = 'carlists.php';</script>";
+			}
+	} else {
 	
-		if(!$result)
-		{
-			echo "Insert Failed";
-		}else
-		{
-			echo "<script> alert('Successfully added!')</script>";
-			echo "<script> alert('Choose the car that you wish to book!')</script>";
+			$_SESSION['st_date'] = $_POST['start_date'];
+			$_SESSION['en_date'] = $_POST['end_date'];
+			$_SESSION['st_time'] = $_POST['start_time'];
+			$_SESSION['en_time'] = $_POST['end_time'];
+	
 			echo "<script>window.location = 'carlists.php';</script>";
-		}
-}
-
-
-
+		
+	}
+} 
 
 
 ?>
@@ -213,6 +224,8 @@ body {
 					$start_date = date('m-d-Y', strtotime($row['start_date']));
 					$end_date = date('m-d-Y', strtotime($row['end_date']));
 				}
+
+			
 			?>
 			<div class="card-body card-block">
 				<form action="index.php" method="post" enctype="multipart/form-data" class="form-horizontal">					
@@ -223,7 +236,7 @@ body {
 							<label  class=" form-control-label">Start Booking Date</label>
 						</div>
 						<div class="col-13 col-md-8">
-							<input type="date" id="start_date" name="start_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>" value="<?php echo $row['start_date']; ?>">
+							<input type="date" id="start_date" name="start_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>" >
 						</div>
 						</div>
 
@@ -231,7 +244,7 @@ body {
 							<label  class=" form-control-label">End Booking Date</label>
 						</div>
 						<div class="col-13 col-md-8">
-							<input type="date" id="end_date" name="end_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>" value="<?php echo $row['end_date']; ?>">
+							<input type="date" id="end_date" name="end_date" placeholder=" Date" class="form-control" required min="<?php echo date('Y-m-d'); ?>" value="">
 						</div>
 						</div>
 						
@@ -242,7 +255,7 @@ body {
 						</div>
 					
 						<div class="col-13 col-md-8">
-							<input type="time" id="start_time" name="start_time" placeholder="Time" class="form-control" required value="<?php $date = date("H:i", strtotime($row['start_time'])); if(isset($date)) { echo $date; } else { echo ''; } ?>">
+							<input type="time" id="start_time" name="start_time" placeholder="Time" class="form-control" required value="">
 						</div>
 						</div>
 
@@ -252,7 +265,7 @@ body {
 						</div>
 						
 						<div class="col-13 col-md-8">
-							<input type="time" id="end_time" name="end_time" placeholder="Time" class="form-control" required value="<?php $date = date("H:i", strtotime($row['end_time'])); if(isset($date)) { echo $date; } else { echo ''; } ?>">
+							<input type="time" id="end_time" name="end_time" placeholder="Time" class="form-control" required value="">
 						</div>
 						</div>
 										
