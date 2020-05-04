@@ -5,45 +5,65 @@ session_start();
 $stu_id = isset($_GET['student_id']) ? $_GET['student_id'] : '';
 $car_id =  isset($_GET['car_id']) ? $_GET['car_id'] : ''; 
 
-
-	
 	if (isset($_POST['submit'])) {
-
+	
 		if($_POST['student_id'] != '' && $_POST['car_id'] != ''){
-	
-			$student_id = $_POST['student_id']; 
-			$car_id = $_POST['car_id'];  
-			$start_date =$_POST['start_date'];
-			$end_date =$_POST['end_date'];
-			$start_time =$_POST['start_time'];
-			$end_time =$_POST['end_time']; 
-		//$book_duration = $_POST['book_duration'];
-		
-		$query =  "INSERT INTO bookings (student_id, car_id, start_date, end_date, start_time, end_time) 
-			VALUES ('$student_id', '$car_id', '$start_date', '$end_date', '$start_time', '$end_time')";
-			
-			$result = mysqli_query($conn,$query);
-		
-			if(!$result)
-			{
-				echo "Insert Failed";
-			}else
-			{
-				echo "<script> alert('Successfully added!')</script>";
-				echo "<script> alert('Choose the car that you wish to book!')</script>";
+						
+			 $start_timestamp =  strtotime($_POST['start_date'].' '.$_POST['start_time'])."<br/>";
+			 $end_timestamp =  strtotime($_POST['end_date'].' '.$_POST['end_time']);
+
+			$checkDateTime = "SELECT * FROM bookings WHERE NOT ((end_timestamp < '".$start_timestamp."') OR (start_timestamp > '".$end_timestamp."')) AND student_id = '".$_POST['student_id']."' AND car_id = '".$_POST['car_id']."'";
+
+			// $checkDateTime = "SELECT * FROM bookings WHERE NOT ((end_date < '".$_POST['start_date']."') OR (start_date > '".$_POST['end_date']."')) AND student_id = '".$_POST['student_id']."' AND car_id = '".$_POST['car_id']."'";
+
+			$checkResult = mysqli_query($conn, $checkDateTime);			
+			$checkRow = mysqli_num_rows($checkResult);
+
+			//  echo $checkRow; exit;
+
+			if($checkRow > 0){
+				echo "<script> alert('This Time and Date alredy Boooked..!')</script>";
 				echo "<script>window.location = 'carlists.php';</script>";
+			} else {
+	
+				$student_id = $_POST['student_id']; 
+				$car_id = $_POST['car_id'];  
+				$start_date = $_POST['start_date'];
+				$end_date = $_POST['end_date'];
+				$start_time = $_POST['start_time'];
+				$end_time = $_POST['end_time']; 
+				//$book_duration = $_POST['book_duration'];
+
+				$start_timestamp =  strtotime($_POST['start_date'].' '.$_POST['start_time']);
+				$end_timestamp =  strtotime($_POST['end_date'].' '.$_POST['end_time']);  
+			
+				$query =  "INSERT INTO bookings (student_id, car_id, start_date, end_date, start_time, end_time, start_timestamp, end_timestamp) 
+				VALUES ('$student_id', '$car_id', '$start_date', '$end_date', '$start_time', '$end_time', '$start_timestamp', '$end_timestamp')";
+				
+				$result = mysqli_query($conn,$query);
+			
+				if(!$result)
+				{
+					echo "Insert Failed";
+				}else
+				{
+					echo "<script> alert('Successfully added!')</script>";
+					echo "<script> alert('Choose the car that you wish to book!')</script>";
+					echo "<script>window.location = 'carlists.php';</script>";
+				}
 			}
-	} else {
-	
-			$_SESSION['st_date'] = $_POST['start_date'];
-			$_SESSION['en_date'] = $_POST['end_date'];
-			$_SESSION['st_time'] = $_POST['start_time'];
-			$_SESSION['en_time'] = $_POST['end_time'];
-	
-			echo "<script>window.location = 'carlists.php';</script>";
+			
+		} else {
 		
+				$_SESSION['st_date'] = $_POST['start_date'];
+				$_SESSION['en_date'] = $_POST['end_date'];
+				$_SESSION['st_time'] = $_POST['start_time'];
+				$_SESSION['en_time'] = $_POST['end_time'];
+		
+				echo "<script>window.location = 'carlists.php';</script>";
+			
+		}
 	}
-} 
 
 
 ?>
@@ -381,3 +401,4 @@ $seconds = floor(($diff - $years * 365*60*60*24
     // 	}
 	// }
 	?>
+	

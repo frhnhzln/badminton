@@ -11,8 +11,12 @@ if(isset($_GET["booking_id"]))
     $id = $_GET["booking_id"];
     $getOrderDetail = "SELECT * FROM payment WHERE booking_id = '$id'";
     $result = mysqli_query($conn, $getOrderDetail);
-    $row = mysqli_fetch_assoc($result);  
-
+	$row = mysqli_fetch_assoc($result);  
+	
+	$booking = "SELECT * FROM bookings WHERE booking_id = '".$id."'";
+	$book = mysqli_query($conn, $booking);
+	$bookduration = mysqli_fetch_assoc($book);  
+	
     $studentName = "SELECT * FROM student WHERE student_id = '".$row['student_id']."'";
     $stuName = mysqli_query($conn, $studentName);
     $name = mysqli_fetch_assoc($stuName); 
@@ -100,7 +104,8 @@ if(isset($_GET["booking_id"]))
 		<tr>		
 			<th>Booking Id</th>
 			<th>Student Name</th>
-			<th>Car Name</th>
+			<th>Car Name</th>	
+			<th>Booking Duration</th>		
 			<th>Car Booking Rate</th>
 			<th>Owner Rate</th>
 			<th>Admin Rate</th>
@@ -112,7 +117,8 @@ if(isset($_GET["booking_id"]))
 		
 		echo "<td>" . $row["booking_id"] . "</td>";
 		echo "<td>" . $name['name'] . "</td>";
-		echo "<td>" . $car["name"] . "</td>";
+		echo "<td>" . $car["name"] . "</td>";	
+		echo "<td>" .$bookduration['booking_duration'] . "</td>";	
 		echo "<td>" . $row["total_rate"] . "</td>";
 		echo "<td>" . $row["owner_rate"] . "</td>";
 		echo "<td>" . $row["admin_rate"] . "</td>";

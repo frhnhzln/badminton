@@ -76,7 +76,7 @@ if(isset($_GET["id"]))
 <?php
 
 $student_id =  19;
-//   echo "Select * FROM bookings WHERE car_id = $id AND  student_id = $student_id"; 
+
 $id=$_GET["id"];
 $getBookingDetail = "Select * FROM bookings WHERE car_id = ".$id." AND  student_id = ".$student_id."";
 $bookDetail = mysqli_query($conn, $getBookingDetail);
@@ -91,15 +91,15 @@ if(isset($_POST['submit']))
 	$student_id = 19;
 	$car_id = $_POST['id'];
 	$booking_id = $_POST['booking_id'];
-	 $start_date =$_POST['start_date'];
-	 $end_date =$_POST['end_date']; 
+	$start_date =$_POST['start_date'];
+	$end_date =$_POST['end_date']; 
 	$start_time =$_POST['start_time'];
 	$end_time =$_POST['end_time'];
 	$booking_fee= $_POST['booking_fee'];
-	//$book_duration = $_POST['book_duration'];
+	$booking_duration = $_POST['booking_duration'];
 
 
-	$query = "UPDATE bookings SET `student_id` = $student_id, `car_id` = $car_id, `start_date` = '".$start_date."', `end_date` = '".$end_date."', `start_time` = '".$start_time."', `end_time` = '".$end_time."', `booking_fee` = $booking_fee, `booking_payment`= 'paid' WHERE `car_id` = $car_id AND `booking_id` = $booking_id AND `student_id` = $student_id";
+	$query = "UPDATE bookings SET `student_id` = $student_id, `car_id` = $car_id, `start_date` = '".$start_date."', `end_date` = '".$end_date."', `start_time` = '".$start_time."', `end_time` = '".$end_time."', `booking_fee` = $booking_fee, `booking_duration` = $booking_duration, `booking_payment`= 'paid' WHERE `car_id` = $car_id AND `booking_id` = $booking_id AND `student_id` = $student_id";
 
 	$res = mysqli_query($conn,$query);
 
@@ -153,14 +153,29 @@ if(isset($_POST['submit']))
         <tbody>
 		<tr>
 		<?php 
-		
+		if(isset( $_SESSION['st_date']) && isset($_SESSION['en_date']) && isset($_SESSION['st_time']) && isset($_SESSION['en_time'])) {
+
+			$date1 = $_SESSION['st_date'].' '.$_SESSION['st_time'];
+			$date2 = $_SESSION['en_date'].' '.$_SESSION['en_time'];
+			
+			$timestamp1 = strtotime($date1);
+			$timestamp2 = strtotime($date2);
+			$hour = abs($timestamp2 - $timestamp1)/(60*60);
+			$totalhour = round($hour);
+
+			$booking_rate = ($row["rate"])*$totalhour;
+		}
 		
 		?>
 			<td><input type="text" class="form-control" name="start_date" value="<?php if(isset( $_SESSION['st_date'])) { echo $_SESSION['st_date']; } ?>"></td>
 			<td><input type="text" class="form-control" name="end_date" value="<?php if(isset($_SESSION['en_date'])){ echo $_SESSION['en_date']; } ?>"></td>
 			<td><input type="text" class="form-control" name="start_time" value="<?php if(isset($_SESSION['st_time'])){ echo $_SESSION['st_time']; } ?>"></td>
 			<td><input type="text" class="form-control" name="end_time" value="<?php if(isset($_SESSION['en_time'])){ echo $_SESSION['en_time']; } ?>"></td>
-
+			<td><input type="text" class="form-control" name="duration" value="<?php if(isset($hour)) { echo round($hour); } ?>"></td>
+			<td><input type="text" class="form-control" name="booking" value="<?php if(isset($booking_rate)) { echo $booking_rate; } ?>"></td>
+			<input type="hidden" class="form-control" name="booking_fee" value="<?php if(isset($booking_rate)) { echo $booking_rate; } ?>">
+			<input type="hidden" class="form-control" name="booking_duration" value="<?php if(isset($hour)) { echo round($hour); } ?>">
+			
 			<!-- <td><input type="text" class="form-control" name="start_date" value="<?php //echo $book['start_date']; ?>"></td>
 			<td><input type="text" class="form-control" name="end_date" value="<?php //echo $book['end_date']; ?>"></td>
 			<td><input type="text" class="form-control" name="start_time" value="<?php //echo $book['start_time']; ?>"></td>
@@ -196,7 +211,7 @@ if(isset($_POST['submit']))
 
 <br>
 <br>
-<input type="hidden" class="form-control" name="booking_fee" value="<?php echo $row["rate"]; ?>">
+
 <table id="example" class="table table-striped table-bordered">
 
 	<thead>
