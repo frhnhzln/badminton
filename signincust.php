@@ -1,51 +1,56 @@
 <?php
 include 'dbconn.php';
 session_start();
+
 if(isset($_POST["submit"])){
 	//sanitize
 	$email = htmlspecialchars($_POST["email"]);
-	$pass = htmlspecialchars($_POST["pass"]);
-	$sql = "SELECT * FROM student WHERE email='$email'";
-    
+	$pass = $_POST["pass"];
+
+
+	$sql = "SELECT * FROM customer WHERE email='$email'";
+
 	$result = mysqli_query($conn, $sql);
 	$result_num_row = mysqli_num_rows($result);
-	
+
 	if($result_num_row == 1){
-		
+
 		$row = mysqli_fetch_assoc($result);
-		
+
 		$password_hashed = $row["pass"];
-		
-		$password_valid = password_verify($pass, $password_hashed);
-		
-		if($password_valid == TRUE){
+        echo $password_hashed;
+        echo "   ";
+        echo $pass;
+        echo " password valid:  ";
+		$password_valid2 = password_verify($pass, $password_hashed);
+		echo $password_valid2;
+		if($password_valid2 == TRUE){
+			$_SESSION['student_id'] = $row["student_id"];
 			$_SESSION['name'] = $row["name"];
-            $_SESSION['email'] = $row["email"];
-            $_SESSION['student_id'] = $row["student_id"];
-            
-		 echo "<script>alert('Wrong Email or Password')</script>";
-			
+			$_SESSION['email'] = $row["email"];
+
+            echo "<script>window.open('indexx.php','_self')</script>";
+
+
+
+
+
+			//echo "Hi, " . $_SESSION['name'] ." welcome to my ec lab";
+			//echo "Press <a href='home.php'>home</a>";
 		}else{
-			//wrong password action//boleh display link untuk reset password ect
-			/*echo "wrong pasword";
-			echo "reset password?<a href='reset_password.php'>click here</a>";*/
-			$_SESSION["student_id"]=$row['student_id'];
-			$_SESSION["name"] = $row['name'];
-			
-           echo "<script>alert('Sign in success, Welcome ".$_SESSION['name']."')</script>";
-			echo "<script>window.open('indexx.php','_self')</script>";
-            echo "$pass";
-          //  echo "</br>$password_hashed";
-            echo "</br>$password_valid";
+            //wrong password action//boleh display link untuk reset password ect
+
+			echo "wrong pasword";
+            echo "reset password?<a href='reset.php'>click here</a>";
+
+
 		}
-		
-		
+
+
 	}else{
-		//echo "user not registered";
-		echo "<script>alert('User not registered')</script>";
+		echo "user not registered";
 	}
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,7 +95,7 @@ body {
 
 
 	<head>
-		
+
  <!-- Required meta tags-->
  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -122,7 +127,7 @@ body {
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
 
-	
+
     </head>
 <body class="animsition">
     <div class="page-wrapper">
@@ -130,9 +135,10 @@ body {
             <div class="images/icon/platinum.jpg">
                 <div class="login-wrap">
                     <div class="login-content">
+                        <center><a style="font-size: 30px;">Customer Login</a></center>
                         <div class="login-logo">
-                            <a href="login.php">
-                                <img src="image/logo.jpg" alt="CoolAdmin">
+                            <a href="home.php">
+                                <img src="image/radia.png" alt="CoolAdmin">
                             </a>
                         </div>
                         <div class="login-form">
@@ -154,7 +160,7 @@ body {
                                     </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--blue m-b-20" value="sign in" type="submit" name="submit">sign in</button>
-                                
+
                             </form>
                             <div class="register-link">
                                 <p>

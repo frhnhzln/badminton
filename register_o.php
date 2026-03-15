@@ -40,7 +40,7 @@ session_start();
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
 
-    
+
 
 </head>
 
@@ -53,11 +53,11 @@ session_start();
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="register_c.php">
-                                <img src="image/logo.jpg" alt="Udani Logo">
+                               <!-- <img src="image/logo.jpg" alt="Udani Logo"> -->
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="" method="post" enctype="multipart/form-data">
                                 <div class="form-group"  required="required">
                                     <label>Name</label>
                                     <input class="au-input au-input--full" id="name" type="text" name="name" placeholder="Full Name" class="form-control" required="required">
@@ -70,37 +70,27 @@ session_start();
 
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input class="au-input au-input--full" id="email" type="text" name="email" placeholder="Email" class="form-control" required="required">
+                                    <input class="au-input au-input--full" id="email" type="email" name="email" placeholder="Email" class="form-control" required="required">
                                 </div>
 
 								<div class="form-group">
                                     <label>Password</label>
                                     <input class="au-input au-input--full" id="pass" type="password" name="pass" placeholder="Password" class="form-control" required="required">
                                 </div>
-								
+
                                 <div class="form-group"  required="required">
                                     <label>Phone Number</label>
                                     <input class="au-input au-input--full" id="phone" type="text" name="phone" placeholder="Phone Number" class="form-control" required="required">
                                 </div>
-                                
-                                <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="file-input" class=" form-control-label">Company Certificate</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <input type="file" id="cert" name="cert" class="form-control-file">
-                                                </div>
-                                            </div>
 
 
-                                
                               <br/>  <button class="au-btn au-btn--block au-btn--blue m-b-20" type="submit" name="submit" >register</button>
-                               
+
                             </form>
                             <div class="register-link">
                                 <p>
                                     Already have account?
-                                    <a href="signinowner.php">Sign In</a>
+                                    <a href="signinstaff.php">Sign In</a>
                                 </p>
                             </div>
                         </div>
@@ -143,35 +133,33 @@ session_start();
 
 	if(isset($_POST['submit']))
 	{
-		
-        $id = $_POST['id'];
+
+        //$id = $_POST['id'];
 		$name =htmlspecialchars($_POST['name']);
 		$name =mysqli_real_escape_string($conn,$name);
-		
-		
         $address = $_POST['address'];
         $email = htmlspecialchars($_POST['email']);
 		$pass = htmlspecialchars($_POST['pass']);
-        $password_hashed = password_hash($pass,PASSWORD_BCRYPT);     
+        $password_hashed = password_hash($pass,PASSWORD_BCRYPT);
         $phone = $_POST['phone'];
-        $cert = mysqli_real_escape_string($conn,$_FILES["cert"]["name"]);
-		
-        $target = "image/cert/".basename($cert);
-        
+        $image = mysqli_real_escape_string($conn,$_FILES["image"]["name"]);
 
-		$insert_c = "INSERT into owner
-		(name,address,email,pass,phone,cert) VALUES 
-		('$name','$address','$email','$password_hashed','$phone','$cert')";
+        $target = "image/ownerimage/".basename($image);
+
+
+		$insert_c = "INSERT into staff
+		(name,address,email,pass,phone,image) VALUES
+		('$name','$address','$email','$password_hashed','$phone','$image')";
 		$run_c = mysqli_query($conn, $insert_c);
-        
+        echo $insert_c;
         if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
             $msg = "Image uploaded successfully";
           }else{
             $msg = "Failed to upload image";
-          }    
+          }
 		{
-			echo "<script> alert('Owner Successfully Registered!')</script>";
-			echo "<script>window.open('signinowner.php','_self')</script>";
+			echo "<script> alert('Successfully Requested! Please wait for the admin to verify your account!')</script>";
+			echo "<script>window.open('signinstaff.php','_self')</script>";
 		}
 		{
 			{

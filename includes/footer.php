@@ -22,7 +22,7 @@ if($lastInsertId)
 {
 echo "<script>alert('Subscribed successfully.');</script>";
 }
-else 
+else
 {
 echo "<script>alert('Something went wrong. Please try again');</script>";
 }
@@ -34,21 +34,21 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
   <div class="footer-top">
     <div class="container">
       <div class="row">
-      
+
         <div class="col-md-6">
           <h6>About Us</h6>
           <ul>
 
-        
+
           <li><a href="page.php?type=aboutus">About Us</a></li>
             <li><a href="page.php?type=faqs">FAQs</a></li>
             <li><a href="page.php?type=privacy">Privacy</a></li>
           <li><a href="page.php?type=terms">Terms of use</a></li>
-               <li><a href="signinstaff.php">Admin Login</a></li>
-               <li><a href="signinowner.php">Owner Login</a></li>
+               <li><a href="signinadmin.php">Manager Login</a></li>
+               <li><a href="signinstaff.php">Staff Login</a></li>
           </ul>
         </div>
-  
+
         <div class="col-md-3 col-sm-6">
           <h6>Subscribe Newsletter</h6>
           <div class="newsletter-form">
@@ -71,16 +71,13 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
           <div class="footer_widget">
             <p>Connect with Us:</p>
             <ul>
-              <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.facebook.com/pages/Rhino-KV-Arena-Shah-Alam/111522470242459"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.instagram.com/explore/locations/110226997189841/radia-arena-bukit-jelutong/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
             </ul>
           </div>
         </div>
         <div class="col-md-6 col-md-pull-6">
-          <p class="copy-right">Copyright &copy; 2020 Car Rental Hub. All Rights Reserved</p>
+          <p class="copy-right">Copyright &copy; 2021 Radia Arena. All Rights Reserved</p>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ session_start();
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Staff Home</title>
+    <title>Manager Home</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -38,6 +38,7 @@ session_start();
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+    <?php include_once('includes/header_s.php');?>
 
 </head>
 
@@ -75,25 +76,7 @@ body {
 }
 </style>
 </head>
-    <div class="page-wrapper">
-	
-    <div class="topnav">
-  <a class="active" href="home_s.php">Home</a>
-  <!--<a href="add_car.php">Add Cars</a>-->
-  <a href="logout_s.php">Log Out</a>
-  <div class="content">
-                                    <!--<a class="js-acc-btn" href="cars.php"><?php echo $_SESSION ['name']; ?></a>-->
-                                </div>
-                                
-								<div class="account-dropdown js-dropdown">
-								
-                                    <!--<div class="account-dropdown__footer">
-                                        <a href="logout.php">
-                                            <i class="zmdi zmdi-power"></i>Logout</a>
-                                    </div>-->
-                                    
-									
-                                </div>
+
   <!--<?php
   echo " ".$_SESSION ['name']."";
   ?>-->
@@ -110,7 +93,7 @@ body {
                     </div>
                     <div class="header__tool">
                         <div class="header-button-item has-noti js-item-menu">
-                            
+
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
 
@@ -118,12 +101,12 @@ body {
                                     <a class="js-acc-btn" href="#"><?php echo $staff_email; ?></a>
                                 </div>
                                 <div class="account-dropdown js-dropdown">
-								
+
                                     <div class="account-dropdown__footer">
                                         <a href="logout.php">
                                             <i class="zmdi zmdi-power"></i>Logout</a>
                                     </div>
-									
+
                                 </div>
                             </div></div>
                         </div>
@@ -132,30 +115,116 @@ body {
             </div>
         </header>
          END HEADER DESKTOP -->
-        
-            
-                <div class="login-wrap">
+
+         <?php
+$sql1 = "SELECT SUM(total_rate) AS value_sum FROM payment";
+$result1 = $conn->query($sql1);
+
+if ($result1->num_rows > 0) {
+    // output data of each row
+    while($row = $result1->fetch_assoc()) {
+        //echo "Total Sales Received : RM " . $row["value_sum"];
+    }
+  }
+?>
+<br><br>
+<p class="aligncenter">
+    <img src="image/radia.png" alt="centered image" style="margin-top:100px;" />
+</p>
+<style>
+.aligncenter {
+    text-align: center;
+}
+</style>
+            <br><br><br><br><br>
+         <!-- STATISTIC-->
+         <section class="statistic">
+                <div  class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="statistic__item">
+                                <h2 class="number"> <?php
+                                    $sql1 = "SELECT COUNT(name) AS value_sum FROM customer";
+                                    $result1 = $conn->query($sql1);
+
+                                    if ($result1->num_rows > 0) {
+                                     // output data of each row
+                                    while($row = $result1->fetch_assoc()) {
+                                    echo $row["value_sum"];
+                                             }
+                                     }
+?></h2>
+                                    <span class="desc">registered user</span>
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-account-o"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-3">
+                                <div class="statistic__item">
+                                <h2 class="number"> <?php
+                                    $sql1 = "SELECT COUNT(booking_id) AS value_sum FROM bookings";
+                                    $result1 = $conn->query($sql1);
+
+                                    if ($result1->num_rows > 0) {
+                                     // output data of each row
+                                    while($row = $result1->fetch_assoc()) {
+                                    echo $row["value_sum"];
+                                             }
+                                     }
+?></h2>
+                                    <span class="desc">TOTAL BOOKINGS MADE</span>
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-calendar-note"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="statistic__item">
+                                    <h2 class="number"> <?php
+                                    $sql1 = "SELECT SUM(total_rate) AS value_sum FROM payment";
+                                    $result1 = $conn->query($sql1);
+
+                                    if ($result1->num_rows > 0) {
+                                     // output data of each row
+                                    while($row = $result1->fetch_assoc()) {
+                                    echo "RM " . (round($row["value_sum"],2));
+                                             }
+                                     }
+?></h2>
+                                    <span class="desc">total sales received</span>
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-money"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END STATISTIC-->
+
+            <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
-                            <a href="M_dashboard.php">
-                                <img src="image/logo.jpg" alt="CAR RENTAL HUB">
-                            </a>
+
 				<nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                     
-					   
-					   
-                        <li><a href="staff_students.php"><button type="button" class="btn btn-primary btn-lg">List of Students</button></a></li>         
-						<li><a href="staff_owners.php"><button type="button" class="btn btn-primary btn-lg">List of Owners</button></a></li>    
-                        <li><a href="app.php"><button type="button" class="btn btn-primary btn-lg">Application List</button></a></li>
-						<li><a href="staff_cars.php"><button type="button" class="btn btn-primary btn-lg">List of Cars</button></a></li>   
-						<li><a href="commision.php"><button type="button" class="btn btn-primary btn-lg">View Commisions Received</button></a></li>
+                        <li><a href="bookingsadmin.php"><button type="button" class="btn btn-primary btn-lg">Booking</button></a></li>
+                        <li><a href="custa.php"><button type="button" class="btn btn-primary btn-lg">List of User </button></a></li>
+                        <li><a href="staffdetails.php"><button type="button" class="btn btn-primary btn-lg">List of Staff</button></a></li>
+
+
+						<li><a href="admin_fields.php"><button type="button" class="btn btn-primary btn-lg">List of Field</button></a></li>
+						<li><a href="commision.php"><button type="button" class="btn btn-primary btn-lg">View Sales Received</button></a></li>
                     </ul>
                 </nav>
                         </div>
                     </div>
                 </div>
-        
+
 		<!--<div class="row">
 					<div class="col-md-12">
 						<div class="copyright">
@@ -165,7 +234,7 @@ body {
 				</div>-->
 
 </div>
-		
+
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->

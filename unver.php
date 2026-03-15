@@ -39,7 +39,7 @@
                                         <strong class="card-title">Application Status</strong>
                                     </div>
                                     <div class="card-body">
-                                        <p class="card-text">Your application has been sent. Please wait for verification before using Car Rental Hub. Thank you for your patience.
+                                        <p class="card-text">Your application has been sent. Please wait for verification before using Radia Arena Football Field Booking System. Thank you for your patience.
                                         </p>
                                     </div>
                                 </div>
@@ -49,12 +49,12 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <strong> Sorry, please try again later. </strong>
-                                        
+
                                     </div>
                                     <div class="card-body">
                                         <!--<a href ="close.php" type="button" class="btn btn-danger" onclick="windowClose()">Exit</button>-->
                                         <a href="logout_o.php" type="button" class="btn btn-warning">Logout</a>
-                                        
+
                                     </div>
                                 </div>
 </div>

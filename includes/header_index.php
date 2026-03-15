@@ -4,21 +4,21 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3 col-md-2">
-          <div class="logo"> <a href="index.php"><img src="image/logoss.jpg" alt="image"/></a> </div>
+          <div class="logo"> <a href="index.php"><img src="image/radia.png" alt="image"/></a> </div>
         </div>
         <div class="col-sm-9 col-md-10">
           <div class="header_info">
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-envelope" aria-hidden="true"></i> </div>
               <p class="uppercase_text">For Support Mail us : </p>
-              <a href="mailto:carrentalhub@gmail.com">carrentalhub@gmail.com</a> </div>
+              <a "mailto:kvrhino@gmail.com">kvrhino@gmail.com </a> </div>
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-phone" aria-hidden="true"></i> </div>
               <p class="uppercase_text">Service Helpline Call Us: </p>
-              <a href="tel:09-621 6600">+09-621 6600</a> </div>
+              <a href="tel:017-583 3495">+6017-583 3495</a> </div>
             <div class="social-follow">
               <ul>
-                <li><a href="https://www.facebook.com/UitmKampusKualaTerengganuCendering/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.facebook.com/pages/Rhino-KV-Arena-Shah-Alam/111522470242459"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
@@ -26,11 +26,11 @@
               </ul>
             </div>
   <!-- <?php   if(strlen($_SESSION['login'])==0)
-	{	
+	{
 ?>-->
- 
+
 <?php }
-else{ 
+else{
 
 echo "Welcome To Car Rental Hub";
  } ?>
@@ -39,7 +39,7 @@ echo "Welcome To Car Rental Hub";
       </div>
     </div>
   </div>
-  
+
   <!-- Navigation -->
   <nav id="navigation_bar" class="navbar navbar-default">
     <div class="container">
@@ -49,24 +49,20 @@ echo "Welcome To Car Rental Hub";
       <div class="header_wrap">
         <div class="user_login">
           <ul>
-            <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i> 
+            <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>
 
-   
+
    <i class="fa fa-angle-down" aria-hidden="true"></i></a>
               <ul class="dropdown-menu">
            <!--<?php if($_SESSION['student_id']){?>-->
             <li><a href="profile.php">Profile Settings</a></li>
               <li><a href="update-password.php">Update Password</a></li>
-            <li><a href="my-booking.php">My Booking</a></li>
-            <li><a href="post-testimonial.php">Post a Testimonial</a></li>
-          <li><a href="my-testimonials.php">My Testimonial</a></li>
+            <li><a href="mybooking.php">My Booking</a></li>
             <li><a href="logout_c.php">Sign Out</a></li>
             <?php } else { ?>
             <li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">Profile Settings</a></li>
               <!--<li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">Update Password</a></li>-->
             <li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">My Booking</a></li>
-            <li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">Post a Testimonial</a></li>
-          <li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">My Testimonial</a></li>
             <li><a href="logout_c.php"  data-toggle="modal" data-dismiss="modal">Sign Out</a></li>
             <?php } ?>
           </ul>
@@ -75,7 +71,7 @@ echo "Welcome To Car Rental Hub";
         </div>
         <div class="header_search">
           <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
-          <form action="#" method="get" id="header-search-form">
+          <form action="car-listing.php?name=" method="get" id="header-search-form">
             <input type="text" placeholder="Search..." class="form-control">
             <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
           </form>
@@ -85,7 +81,7 @@ echo "Welcome To Car Rental Hub";
         <ul class="nav navbar-nav">
           <li><a href="index.php">Book Now!</a>    </li>
           <li><a href="indexx.php">Home</a>    </li>
-          <li><a href="car-listing.php">Car Listing</a>
+          <li><a href="field-listing.php">Field</a>
           <li><a href="page.php?type=aboutus">About Us</a></li>
           <li><a href="page.php?type=faqs">FAQs</a></li>
           <li><a href="contact-us.php">Contact Us</a></li>
@@ -95,6 +91,6 @@ echo "Welcome To Car Rental Hub";
       </div>
     </div>
   </nav>
-  <!-- Navigation end --> 
-  
+  <!-- Navigation end -->
+
 </header>

@@ -4,8 +4,8 @@ include 'dbconn.php';
 SESSION_START();
 if(isset($_GET["delete"])){
 	$id= $_GET["id"];
-	
-	$sql = "DELETE FROM owner WHERE id = '$id'";
+
+	$sql = "DELETE FROM staff WHERE id = '$id'";
 	$result = mysqli_query($conn, $sql);
 	if($result){
 		echo "<script>alert('Delete success');</script>";
@@ -54,71 +54,91 @@ body {
 </head>
 <body>
 
-<div class="topnav">
-  <a class="active" href="home_s.php">Home</a>
-  <!--<a href="add_car.php">Add Cars</a>-->
-  <a href="logout_o.php">Log Out</a>
-  <div class="content">
-                                    <!--<a class="js-acc-btn" href="students.php"><?php echo $_SESSION ['name']; ?></a>-->
-                                </div>
-                                
-								<div class="account-dropdown js-dropdown">
-								
-                                    <!--<div class="account-dropdown__footer">
-                                        <a href="logout.php">
-                                            <i class="zmdi zmdi-power"></i>Logout</a>
-                                    </div>-->
-                                    
-									
-                                </div>
-  <!--<?php
-  echo " ".$_SESSION ['name']."";
-  ?>-->
-</div>
+
 
 
 </body>
 </html>
 
 <html>
-<head><title>Unverified Owners</title>
+<head><title>Unverified Staff</title>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 <form method="get" action="students.php" enctype="multipart/form-data">
-
+<?php include_once('includes/header_s.php');?>
 </head>
 <body>
 <div class="container">
 			<br />
 			<br />
 			<br />
-			<a href="students.php">
-                             <center>   <img src="image/logo.jpg" alt="CoolAdmin"> <center>
+			<a href="home_s.php">
+                             <center>   <img src="image/radia.png" alt="CoolAdmin"> <center>
                             </a>
 <br><br><br>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
 
-<table id="example" class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Email</th>
-				<th>Phone</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-		<?php
-		$sql = "SELECT * FROM owner";
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+
+<h2>Unverified Staff</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search unverified staff.." title="Type in a name">
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:30%;">Name</th>
+    <th style="width:40%;">Address</th>
+    <th style="width:40%;">Email</th>
+    <th style="width:40%;">Phone</th>
+    <th style="width:40%;">Action</th>
+  </tr>
+  <?php
+		$sql = "SELECT * FROM staff";
 		$result = mysqli_query($conn, $sql);
 		$num_rows = mysqli_num_rows($result);
 
-		
+
 		if($num_rows > 0){
-			
+
 			while($row = mysqli_fetch_assoc($result)){
 				//if($row['owner_id']==$_SESSION['owner_id']){
-                if ($row ['status']=='1'){
+                if ($row ['status']=='unverified'){
 				echo "<tr>";
 				echo "<td>" . $row["name"] . "</td>";
 				echo "<td>" . $row["address"] . "</td>";
@@ -133,10 +153,35 @@ body {
 			}
 			}
         }
-		
+
 		?>
 		</tbody>
 </table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>
+
 
 
 <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>

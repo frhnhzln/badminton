@@ -14,10 +14,16 @@ while($row1=mysqli_fetch_array($run)){
 	$_SESSION['user'] = $user_id;
 	$_SESSION['username'] = $username;
 	$_SESSION['deposit']= $deposit;
-	echo "<script>alert('Log Masuk berjaya, terus ke pembayaran')</script>";
+	$_SESSION['booking_id']= $_POST['booking_id'];
+	echo "<script>alert('Login Successfull')</script>";
 	
-	header('Location:web_pay_confirm.php');
+	header('Location:web_pay_confirm1.php');
 	
+	}
+	else{
+		echo "<script>alert('Invalid Username or Password)</script>";
+	
+		header('Location:login.php');
 	}
 }
 

@@ -40,7 +40,7 @@ session_start();
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
 
-    
+
 
 </head>
 
@@ -53,7 +53,7 @@ session_start();
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="register_c.php">
-                                <img src="image/logo.jpg" alt="Udani Logo">
+                               <!-- <img src="image/logo.jpg" alt="Udani Logo"> -->
                             </a>
                         </div>
                         <div class="login-form">
@@ -62,16 +62,16 @@ session_start();
                                     <label>Name</label>
                                     <input class="au-input au-input--full" id="name" type="text" name="name" placeholder="Full Name" class="form-control" required="required">
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input class="au-input au-input--full" id="email" type="text" name="email" placeholder="Email" class="form-control" required="required">
+                                    <input class="au-input au-input--full" id="email" type="email" name="email" placeholder="Email" class="form-control" required="required">
                                 </div>
 								<div class="form-group">
                                     <label>Password</label>
                                     <input class="au-input au-input--full" id="pass" type="password" name="pass" placeholder="Password" class="form-control" required="required">
                                 </div>
-								
+
                                 <div class="form-group"  required="required">
                                     <label>Address</label>
                                     <input class="au-input au-input--full" id="address" type="text" name="address" placeholder="Address" class="form-control" required="required">
@@ -81,20 +81,13 @@ session_start();
                                     <label>Phone Number</label>
                                     <input class="au-input au-input--full" id="phone" type="text" name="phone" placeholder="Phone Number" class="form-control" required="required">
                                 </div>
-                                
-                                <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="file-input" class=" form-control-label">Driving License</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <input type="file" id="image" name="image" class="form-control-file">
-                                                </div>
-                                            </div>
 
 
-                                
+
+
+
                               <br/>  <button class="au-btn au-btn--block au-btn--blue m-b-20" type="submit" name="submit" >register</button>
-                               
+
                             </form>
                             <div class="register-link">
                                 <p>
@@ -142,29 +135,31 @@ session_start();
 
 	if(isset($_POST['submit']))
 	{
-		
+
         $id = $_POST['id'];
 		$name =htmlspecialchars($_POST['name']);
 		$name =mysqli_real_escape_string($conn,$name);
-		
+
 		$email = htmlspecialchars($_POST['email']);
 		$pass = htmlspecialchars($_POST['pass']);
        $password_hashed = password_hash($pass,PASSWORD_BCRYPT);
-        
         $address = $_POST['address'];
         $phone = $_POST['phone'];
-        
-        $license = mysqli_real_escape_string($conn,$_FILES["image"]["name"]);
-		
-        $target = "image/".basename($image);
+        $image = mysqli_real_escape_string($conn,$_FILES["image"]["name"]);
 
-		$insert_c = "INSERT into student
-		(name,email,pass,address,phone,image) VALUES 
+        $target = "image/studentimage/".basename($image);
+
+		$insert_c = "INSERT into customer
+		(name,email,pass,address,phone,image) VALUES
 		('$name','$email','$password_hashed','$address','$phone','$image')";
 		$run_c = mysqli_query($conn, $insert_c);
-		
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+            $msg = "Image uploaded successfully";
+          }else{
+            $msg = "Failed to upload image";
+          }
 		{
-			echo "<script> alert('Student Successfully Registered!')</script>";
+			echo "<script> alert('User Successfully Registered!')</script>";
 			echo "<script>window.open('signincust.php','_self')</script>";
 		}
 		{

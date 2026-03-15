@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect("localhost","root","","cimbclicks");
+$con = mysqli_connect("localhost","root","","raffbs");
 
 if (mysqli_connect_errno()){
 	
