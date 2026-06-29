@@ -11,11 +11,11 @@
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-envelope" aria-hidden="true"></i> </div>
               <p class="uppercase_text">For Support Mail us : </p>
-              <a "mailto:kvrhino@gmail.com">kvrhino@gmail.com </a> </div>
+              <a "mailto:khairil@gmail.com">khairil@gmail.com </a> </div>
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-phone" aria-hidden="true"></i> </div>
               <p class="uppercase_text">Service Helpline Call Us: </p>
-              <a href="tel:017-583 3495">+6017-583 3495</a> </div>
+              <a href="tel:012-365 7295">+6012-365 7295</a> </div>
             <div class="social-follow">
               <ul>
                 <li><a href="https://www.facebook.com/pages/Rhino-KV-Arena-Shah-Alam/111522470242459"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
@@ -85,7 +85,7 @@ echo "Welcome To Car Rental Hub";
           <li><a href="page.php?type=aboutus">About Us</a></li>
           <li><a href="page.php?type=faqs">FAQs</a></li>
           <li><a href="contact-us.php">Contact Us</a></li>
-          <li><a href="logout_c.php">Log Out</a></li>
+          <li><a href="logout_c.php">Login</a></li>
 
         </ul>
       </div>

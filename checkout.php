@@ -177,16 +177,16 @@ $payment = "INSERT INTO payment (booking_id, student_id, id, total_rate, owner_r
 			$mail->isSMTP();                                            // Send using SMTP
 			$mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
 			$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-			$mail->Username   = 'kvrhino@gmail.com';                     // SMTP username
+			$mail->Username   = 'khairil@gmail.com';                     // SMTP username
 			$mail->Password   = '123456ABCd';                                // SMTP password
 			$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
 			$mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 			//Recipients
-			$mail->setFrom('kvrhino@gmail.com', 'Radia Arena');
+			$mail->setFrom('khairil@gmail.com', 'Radia Arena');
 			$mail->addAddress($staff);     // Add a recipient
 
-			$mail->addReplyTo('kvrhino@gmail.com', 'Information');
+			$mail->addReplyTo('khairil@gmail.com', 'Information');
 
 			// Content
 			$mail->isHTML(true);                                  // Set email format to HTML

@@ -51,13 +51,13 @@ $error="Something went wrong. Please try again";
 <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
 <!-- SWITCHER -->
-		<link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all" data-default-color="true" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
+    <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all" data-default-color="true" />
+    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
 
 <!-- Fav and touch icons -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
@@ -87,7 +87,7 @@ $error="Something went wrong. Please try again";
 </head>
 <body>
 
-<<!-- Start Switcher -->
+<!-- Start Switcher -->
 <?php include('includes/colorswitcher.php');?>
 <!-- /Switcher -->
 
@@ -116,47 +116,57 @@ $error="Something went wrong. Please try again";
 <!--Contact-us-->
 <section class="contact_us section-padding">
   <div class="container">
-    <div  class="row">
+    <div class="row">
       <div class="col-md-6">
         <h3>Have any questions? Just click on the image below to start chatting with us!</h3>
-          <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php }
+        <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php }
         else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
-        <div class="contact_form gray-bg">
-        <a href = "https://api.whatsapp.com/send?phone=60126059652&text=Hey.%20I%20have%20a%20question%20about%20Radia%20Arena%20Booking%21%0A">
-        <img src="image/whatsapp.png" alt="Whatsapp">
-        </a>
+        <div class="contact_form gray-bg text-center">
+          
+          <!-- FIXED: Changed URL message text to 'Badminton%20Court%20Booking%21' -->
+          <a href="https://wa.me/60123657295?text=Hey.%20I%20have%20a%20question%20about%20Badminton%20Court%20Booking%21" target="_blank">
+            <img src="image/whatsapp.png" alt="WhatsApp Chat" class="img-responsive" style="max-width: 200px; display: inline-block;">
+          </a>
+          
         </div>
       </div>
       <div class="col-md-6">
-
         <div class="contact_detail">
-              <?php
-$pagetype=$_GET['type'];
-$sql = "SELECT Address,EmailId,ContactNo from tblcontactusinfo";
-$query = $dbh -> prepare($sql);
-$query->bindParam(':pagetype',$pagetype,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{ ?>
-          <ul>
-            <li>
-              <div class="icon_wrap"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-              <div class="contact_info_m"><?php   echo htmlentities($result->Address); ?></div>
-            </li>
-            <li>
-              <div class="icon_wrap"><i class="fa fa-phone" aria-hidden="true"></i></div>
-              <div class="contact_info_m"><a href="tel:017-583 3495"><?php   echo htmlentities($result->EmailId); ?></a></div>
-            </li>
-            <li>
-              <div class="icon_wrap"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
-              <div class="contact_info_m"><a href="mailto:contact@exampleurl.com"><?php   echo htmlentities($result->ContactNo); ?></a></div>
-            </li>
-          </ul>
-        <?php }} ?>
+          <?php
+          $pagetype=$_GET['type'];
+          $sql = "SELECT Address,EmailId,ContactNo from tblcontactusinfo";
+          $query = $dbh -> prepare($sql);
+          $query->bindParam(':pagetype',$pagetype,PDO::PARAM_STR);
+          $query->execute();
+          $results=$query->fetchAll(PDO::FETCH_OBJ);
+          if($query->rowCount() > 0)
+          {
+            foreach($results as $result)
+            { ?>
+              <ul>
+                <li>
+                  <div class="icon_wrap"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                  <div class="contact_info_m"><?php echo htmlentities($result->Address); ?></div>
+                </li>
+                <li>
+                  <div class="icon_wrap"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                  <div class="contact_info_m">
+                    <a href="https://wa.me/<?php echo preg_replace('/[^0-9]/', '', $result->ContactNo); ?>?text=Hey.%20I%20have%20a%20question%20about%20Badminton%20Court%20Booking%21" target="_blank">
+                      <?php echo htmlentities($result->ContactNo); ?>
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <div class="icon_wrap"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+                  <div class="contact_info_m">
+                    <a href="mailto:<?php echo htmlentities($result->EmailId); ?>">
+                      <?php echo htmlentities($result->EmailId); ?>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            <?php }
+          } ?>
         </div>
       </div>
     </div>
@@ -179,7 +189,6 @@ foreach($results as $result)
 
 <!--Register-Form -->
 <?php include('includes/registration.php');?>
-
 <!--/Register-Form -->
 
 <!--Forgot-password-Form -->
@@ -199,6 +208,4 @@ foreach($results as $result)
 <script src="assets/js/owl.carousel.min.js"></script>
 
 </body>
-
-<!-- Mirrored from themes.webmasterdriver.net/carforyou/demo/contact-us.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jun 2017 07:26:55 GMT -->
 </html>
