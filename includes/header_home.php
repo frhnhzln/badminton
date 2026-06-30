@@ -85,13 +85,15 @@ echo "Welcome To Radia Arena";
           <li><a href="page.php?type=aboutus">About Us</a></li>
           <li><a href="page.php?type=faqs">FAQs</a></li>
           <li><a href="contact-us.php">Contact Us</a></li>
-          <li><a href="signincust.php">Log In</a></li>
-
-
+          <!-- <li><a href="signincust.php">Log In</a></li> -->
+           <?php if(strlen($_SESSION['login']) == 0) { ?>
+              <li><a href="signincust.php">Log In</a></li>
+          <?php } else { ?>
+              <li><a href="logout_c.php">Log Out</a></li>
+          <?php } ?>  
         </ul>
       </div>
     </div>
   </nav>
   <!-- Navigation end -->
-
 </header>

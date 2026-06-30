@@ -54,7 +54,22 @@ $student_id=$_SESSION['student_id'];
             <!-- 2. Kept margin-top: 0px; on the p tag -->
             <p style="color: yellow; font-weight: bold; margin-top: 0px;">We provide a world class football field quality.</p>
             
-            <a href="index.php" class="btn">Book Now! <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a> 
+            <!-- <a href="index.php" class="btn">Book Now! <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>  -->
+             <?php if(isset($_SESSION['student_id']) && !empty($_SESSION['student_id'])) { ?>
+                <a href="index.php" class="btn">
+                    Book Now!
+                    <span class="angle_arrow">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </a>
+            <?php } else { ?>
+                <a href="signincust.php" class="btn">
+                    Login to Book
+                    <span class="angle_arrow">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </a>
+            <?php } ?>
           </div>
         </div>
       </div>

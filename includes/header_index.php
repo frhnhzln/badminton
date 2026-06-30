@@ -85,8 +85,12 @@ echo "Welcome To Car Rental Hub";
           <li><a href="page.php?type=aboutus">About Us</a></li>
           <li><a href="page.php?type=faqs">FAQs</a></li>
           <li><a href="contact-us.php">Contact Us</a></li>
-          <li><a href="logout_c.php">Login</a></li>
-
+          <!-- <li><a href="logout_c.php">Login</a></li> -->
+          <?php if(!isset($_SESSION['student_id']) || empty($_SESSION['student_id'])) { ?>
+              <li><a href="signincust.php">Log In</a></li>
+          <?php } else { ?>
+              <li><a href="logout_c.php">Log Out</a></li>
+          <?php } ?>
         </ul>
       </div>
     </div>
