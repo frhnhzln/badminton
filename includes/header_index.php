@@ -10,11 +10,11 @@
           <div class="header_info">
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-envelope" aria-hidden="true"></i> </div>
-              <p class="uppercase_text">For Support Mail us : </p>
+              <p class="uppercase_text">Email us : </p>
               <a "mailto:khairil@gmail.com">khairil@gmail.com </a> </div>
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-phone" aria-hidden="true"></i> </div>
-              <p class="uppercase_text">Service Helpline Call Us: </p>
+              <p class="uppercase_text">Call Us: </p>
               <a href="tel:012-365 7295">+6012-365 7295</a> </div>
             <div class="social-follow">
               <ul>

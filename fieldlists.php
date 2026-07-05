@@ -48,7 +48,7 @@ session_start();
 <!-- /Header -->
 
 <br>
-<h1 align="center">Please choose the field that you want to book.</h1>
+<h1 align="center">Please choose the court that you want to book.</h1>
 
 </body>
 </html>

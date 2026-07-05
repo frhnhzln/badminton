@@ -138,7 +138,7 @@ body {
                         <center><a style="font-size: 30px;">Customer Login</a></center>
                         <div class="login-logo">
                             <a href="home.php">
-                                <img src="image/radia.png" alt="CoolAdmin">
+                                <img src="image/whatsapp.png" alt="CoolAdmin">
                             </a>
                         </div>
                         <div class="login-form">

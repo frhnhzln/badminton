@@ -13,11 +13,11 @@ session_start();
           <div class="header_info">
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-envelope" aria-hidden="true"></i> </div>
-              <p class="uppercase_text">For Support Mail us : </p>
+              <p class="uppercase_text">Email us : </p>
               <a href="mailto:carrentalhub@gmail.com">carrentalhub@gmail.com</a> </div>
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-phone" aria-hidden="true"></i> </div>
-              <p class="uppercase_text">Service Helpline Call Us: </p>
+              <p class="uppercase_text">Call Us: </p>
               <a href="tel:09-621 6600">+09-621 6600</a> </div>
             <div class="social-follow">
               <ul>
