@@ -68,7 +68,7 @@
                                                 </div>
                                                 <div class="content">
                                                     <a href="app.php" >You got a new staff's application</a>
-                                                    <span class="date">April 12, 2018 06:50</span>
+                                                    <!-- <span class="date">April 12, 2018 06:50</span> -->
                                                 </div>
                                             </div>
                                             <div class="notifi__footer">

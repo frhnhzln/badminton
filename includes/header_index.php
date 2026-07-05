@@ -19,9 +19,9 @@
             <div class="social-follow">
               <ul>
                 <li><a href="https://www.facebook.com/pages/Rhino-KV-Arena-Shah-Alam/111522470242459"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                <!-- <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li> -->
                 <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
               </ul>
             </div>
@@ -79,7 +79,7 @@ echo "Welcome To Car Rental Hub";
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
-          <li><a href="index.php">Book Now!</a>    </li>
+          <!-- <li><a href="index.php">Book Now!</a>    </li> -->
           <li><a href="indexx.php">Home</a>    </li>
           <li><a href="field-listing.php">Field</a>
           <li><a href="page.php?type=aboutus">About Us</a></li>

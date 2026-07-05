@@ -36,7 +36,7 @@ include 'dbconn.php';
                                                 </div>
                                                 <div class="content">
                                                     <p>You got a email notification</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
+                                                    <!-- <span class="date">April 12, 2018 06:50</span> -->
                                                 </div>
                                             </div>
                                             <div class="notifi__item">
@@ -45,7 +45,7 @@ include 'dbconn.php';
                                                 </div>
                                                 <div class="content">
                                                     <p>Your account has been blocked</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
+                                                    <!-- <span class="date">April 12, 2018 06:50</span> -->
                                                 </div>
                                             </div>
                                             <div class="notifi__item">
@@ -54,7 +54,7 @@ include 'dbconn.php';
                                                 </div>
                                                 <div class="content">
                                                     <p>You got a new file</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
+                                                    <!-- <span class="date">April 12, 2018 06:50</span> -->
                                                 </div>
                                             </div>
                                             <div class="notifi__footer">

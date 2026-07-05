@@ -361,7 +361,7 @@
                                                 </div>
                                                 <div class="content">
                                                     <p>You got a email notification</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
+                                                    <!-- <span class="date">April 12, 2018 06:50</span> -->
                                                 </div>
                                             </div>
                                             <div class="notifi__item">
@@ -370,7 +370,7 @@
                                                 </div>
                                                 <div class="content">
                                                     <p>Your account has been blocked</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
+                                                    <!-- <span class="date">April 12, 2018 06:50</span> -->
                                                 </div>
                                             </div>
                                             <div class="notifi__item">
@@ -379,7 +379,7 @@
                                                 </div>
                                                 <div class="content">
                                                     <p>You got a new file</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
+                                                    <!-- <span class="date">April 12, 2018 06:50</span> -->
                                                 </div>
                                             </div>
                                             <div class="notifi__footer">
@@ -2791,10 +2791,10 @@
                                             <i class="fa fa-twitter"></i> fa-twitter</a>
                                     </div>
 
-                                    <div class="fa-hover col-lg-3 col-md-6">
+                                    <!-- <div class="fa-hover col-lg-3 col-md-6">
                                         <a href="#twitter-square">
                                             <i class="fa fa-twitter-square"></i> fa-twitter-square</a>
-                                    </div>
+                                    </div> -->
 
                                     <div class="fa-hover col-lg-3 col-md-6">
                                         <a href="#vimeo-square">
