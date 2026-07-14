@@ -376,6 +376,9 @@ if (isset($_POST['submit'])) {
 
 				$mail->send();
 
+				// Wait before sending the customer email
+				sleep(11);
+
 			} catch (Exception $e) {
 				error_log(
 					'Admin email failed: ' .
