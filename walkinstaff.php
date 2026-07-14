@@ -223,9 +223,9 @@ body {
       <br />
       <br />
       <br />
-      <a href="cars.php">
- <center>    <img src="image/radia.png" alt="CoolAdmin" style="margin-top:50px;"> <center>                            </a>
-<br><br>
+      <!-- <a href="cars.php">
+ <center>    <img src="image/bdmntn logo only.png" alt="CoolAdmin" style="margin-top:50px;"> <center>                            </a> -->
+<br><br><br><br><br>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>

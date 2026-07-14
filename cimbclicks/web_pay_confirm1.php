@@ -55,7 +55,7 @@ $cancel_url = $_SESSION['return_url'];
 ?><br />
 <br />
 <center>
-<img src="../image/radia.png" alt="CRH" style="style=width:200px;height:200px;">
+<img src="image/bdmntn logo only.png" alt="image" style="width: 160px; height: auto;">
 
 <h2>Username: <?php echo $username;?></h2>
 <h3>Account Balance: RM <?php echo $deposit;?></h3>

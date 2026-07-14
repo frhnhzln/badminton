@@ -80,10 +80,10 @@ body {
 			<br />
 			<br />
 			<br />
-			<a href="students.php">
-                             <center>   <img src="image/radia.png" alt="CoolAdmin"> <center>
-                            </a>
-<br><br><br>
+			<!-- <a href="students.php">
+                             <center>   <img src="image/bdmntn logo only.png" alt="CoolAdmin"> <center>
+                            </a> -->
+<br><br><br><br><br>
 
 <table  id="example" class="table table-striped table-bordered">
         <thead>

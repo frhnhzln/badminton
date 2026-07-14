@@ -71,8 +71,8 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
           <div class="footer_widget">
             <p>Connect with Us:</p>
             <ul>
-              <li><a href="https://www.facebook.com/pages/Rhino-KV-Arena-Shah-Alam/111522470242459"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-              <li><a href="https://www.instagram.com/explore/locations/110226997189841/radia-arena-bukit-jelutong/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.facebook.com/selangor.badminton.sba/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.instagram.com/ba.selangor/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
             </ul>
           </div>
         </div>

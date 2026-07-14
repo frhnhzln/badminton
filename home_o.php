@@ -208,7 +208,9 @@ body {
 </div>
 <br><br>
 <p class="aligncenter">
-  <center>    <img src="image/radia.png" alt="CoolAdmin" style="margin-top:50px;"> <center>
+    <center>
+        <img src="image/bdmntn logo only.png" alt="CoolAdmin" style="width: 250px; height: auto; margin-top: 100px;">
+    </center>
 </p>
 <style>
 .aligncenter {

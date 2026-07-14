@@ -138,7 +138,7 @@ body {
                         <center><a style="font-size: 30px;">Manager Login</a></center>
                         <div class="login-logo">
                             <a href="login.php">
-                                <img src="image/radia.png" alt="CoolAdmin">
+                                <img src="image/bdmntn logo full.png" alt="CoolAdmin">
                             </a>
                         </div>
                         <div class="login-form">

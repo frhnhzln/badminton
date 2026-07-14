@@ -129,7 +129,9 @@ if ($result1->num_rows > 0) {
 ?>
 <br><br>
 <p class="aligncenter">
-    <img src="image/radia.png" alt="centered image" style="margin-top:100px;" />
+    <center>
+        <img src="image/bdmntn logo only.png" alt="CoolAdmin" style="width: 250px; height: auto; margin-top: 100px;">
+    </center>
 </p>
 <style>
 .aligncenter {

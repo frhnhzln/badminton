@@ -4,8 +4,12 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3 col-md-2">
-          <div class="logo"> <a href="indexx.php"><img src="image/radia.png" alt="image"/></a> </div>
-        </div>
+          <div class="logo">
+            <a href="indexx.php">
+              <img src="image/bdmntn logo only.png" alt="image" style="width: 160px; height: auto;">
+            </a>
+          </div>
+        </div>  
         <div class="col-sm-9 col-md-10">
           <div class="header_info">
             <div class="header_widgets">
@@ -18,11 +22,11 @@
               <a href="tel:012-365 7295">+6012-365 7295</a> </div>
             <div class="social-follow">
               <ul>
-                <li><a href="https://www.facebook.com/Radia-Arena-Bukit-Jelutong-110226997189841/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.facebook.com/selangor.badminton.sba/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
                 <!-- <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li> -->
-                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.instagram.com/ba.selangor/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
               </ul>
             </div>
   <!-- <?php   if(strlen($_SESSION['login'])==0)

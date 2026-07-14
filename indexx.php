@@ -49,10 +49,10 @@ $student_id=$_SESSION['student_id'];
         <div class="col-md-12 text-center">
           <div class="banner_content">
             <!-- 1. Added style="margin-bottom: 0px;" to the h1 -->
-            <h1 style="margin-bottom: 0px;">Score your goals here..</h1>
+            <h1 style="margin-bottom: 0px;">Play Smart &nbsp; Book Faster.</h1>
             
             <!-- 2. Kept margin-top: 0px; on the p tag -->
-            <p style="color: yellow; font-weight: bold; margin-top: 0px;">We provide a world class football field quality.</p>
+            <p style="color: yellow; font-weight: bold; margin-top: 0px;">A fast, simple and convenient way to book badminton courts.</p>
             
             <!-- <a href="index.php" class="btn">Book Now! <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>  -->
              <?php if(isset($_SESSION['student_id']) && !empty($_SESSION['student_id'])) { ?>
@@ -80,8 +80,8 @@ $student_id=$_SESSION['student_id'];
 <section class="section-padding gray-bg">
   <div class="container">
     <div class="section-header text-center">
-      <h2>Good field <span>Good goal</span></h2>
-      <p>There are many variations of fields ready to be chosen.</p>
+      <h2>Good Court <span>Good Smash</span></h2>
+      <p>Enjoy a faster and more organized badminton court booking experience.</p>
     </div>
     <div class="row">
 

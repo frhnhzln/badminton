@@ -45,7 +45,7 @@ if(isset($_SESSION['deposit'])){
 
 <body>
 <center>
-	<img src="../image/radia.png" alt="CRH" style="style=width:200px;height:200px;">
+	<img src="image/bdmntn logo only.png" alt="image" style="width: 160px; height: auto;">
 <h1>Username: <?php echo $username;?></h1><br />
 <h2>Balance: RM <?php echo $balance ?></h2><br />
 

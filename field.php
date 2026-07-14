@@ -208,14 +208,12 @@ body {
 <?php include_once('includes/sidebar_o.php');?>
 </head>
 <body>
-<div class="container">
-			<br />
-			<br />
-			<br />
-			<a href="home_o.php">
-                             <center>    <img src="image/radia.png" alt="CoolAdmin" style="margin-top:50px;"> <center>
-                            </a>
-<br><br><br>
+<!-- <div class="container" style="display: flex; justify-content: center; align-items: center; min-height: 30vh;">
+    <a href="home_o.php">
+        <img src="image/bdmntn logo only.png" alt="CoolAdmin" style="width: 450px; height: auto; margin-left: -180px;">
+    </a>
+</div> -->
+<br><br><br><br>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>

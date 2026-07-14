@@ -151,7 +151,7 @@ body {
     <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="home_o.php">
-                    <img src="image/radia.png" width ='60' height = '60' alt="CoolAdmin" />
+                    <img src="image/bdmntn logo only.png" width ='60' height = '60' alt="CoolAdmin" />
 
                 </a>
             </div>

@@ -4,7 +4,7 @@
     <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="home_o.php">
-                    <img src="image/radia.png" width ='60' height = '60' alt="Car Rental Hub" />
+                    <img src="image/bdmntn logo only.png" width ='60' height = '60' alt="Car Rental Hub" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">

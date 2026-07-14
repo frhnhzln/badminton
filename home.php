@@ -55,8 +55,8 @@ $email=$_SESSION['email'];
       <div class="row">
         <div class="col-md-5 col-md-push-7">
           <div class="banner_content">
-            <h1>Score your goals here.</h1>
-            <p>We provide a world class football field quality. </p>
+            <h1>Play Smart.Book Faster.</h1>
+            <p>A fast, simple and convenient way to book badminton courts. </p>
             <a href="signincust.php" class="btn">Book Now! <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a> </div>
         </div>
       </div>

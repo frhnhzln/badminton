@@ -65,7 +65,7 @@ img {
 
 
 
-<img src="image/radia.png" alt="Paris" >
+<img src="image/bdmntn logo only.png" alt="image" style="width: 160px; height: auto;">
 
 </body>
 </html>
