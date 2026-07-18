@@ -246,7 +246,7 @@ body {
 
 						<div class="col-13 col-md-8">
 							<!-- <input type="time" id="start_time" name="start_time" placeholder="Time" class="form-control" required value=""> -->
-							 <input type="time" id="start_time" name="start_time" placeholder="Time" class="form-control" required min="18:00" max="22:00" value="">
+							 <input type="time" id="start_time" name="start_time" placeholder="Time" class="form-control" required min="10:00" max="22:00" value="">
 						</div>
 						</div>
 
@@ -319,7 +319,7 @@ body {
 					durationInput.addEventListener('change', updateEndTime);
 				});
 
-				//user can select from 6pm to 10pm only
+				//user can select from 10am to 10pm only
 				document.addEventListener('DOMContentLoaded', function() {
 					// var startTimeInput = document.getElementById('start_time');
 					var form = startTimeInput.form;
@@ -329,8 +329,8 @@ body {
 					// 	if (startTime) {
 					// 		var parts = startTime.split(':');
 					// 		var hour = parseInt(parts[0], 10);
-					// 		if (hour < 18 || hour > 22) {
-					// 			alert('Start Time must be between 18:00 (6pm) and 22:00 (10pm) only.');
+					// 		if (hour < 10 || hour > 22) {
+					// 			alert('Start Time must be between 10:00 AM and 10:00 PM only.');
 					// 			e.preventDefault();
 					// 			startTimeInput.focus();
 					// 		}
@@ -341,7 +341,7 @@ body {
 					startTime.addEventListener('input', function () {
 						if (startTime.validity.rangeUnderflow || startTime.validity.rangeOverflow) {
 							startTime.setCustomValidity(
-								'Value must be between 6:00 PM and 10:00 PM only'
+								'Value must be between 10:00 AM and 10:00 PM only'
 							);
 						} else {
 							startTime.setCustomValidity('');
