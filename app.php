@@ -72,9 +72,9 @@ body {
 			<br />
 			<br />
 			<br />
-			<a href="home_s.php">
+			<!-- <a href="home_s.php">
                              <center>   <img src="image/bdmntn logo only.png" alt="CoolAdmin"> <center>
-                            </a>
+                            </a> -->
 <br><br><br>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>

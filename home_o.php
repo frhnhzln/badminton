@@ -172,7 +172,7 @@ body {
   color: white;
 }
 body {
-  background-image: url('image/blue.jpg');
+  background-image: url('#');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
