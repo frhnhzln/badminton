@@ -90,7 +90,7 @@ echo "Welcome To Car Rental Hub";
           <li><a href="indexx.php">Home</a>    </li>
           <li><a href="field-listing.php">Court</a>
           <li><a href="page.php?type=aboutus">About Us</a></li>
-          <li><a href="page.php?type=faqs">FAQs</a></li>
+          <li><a href="page.php?type=faqs">News</a></li>
           <li><a href="contact-us.php">Contact Us</a></li>
           <li><a href="logout_c.php">Log Out</a></li>
 
