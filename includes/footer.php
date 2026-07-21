@@ -36,7 +36,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
       <div class="row">
 
         <div class="col-md-6">
-          <h6>About Us</h6>
+          <!-- <h6>About Us</h6> -->
           <ul>
 
 
