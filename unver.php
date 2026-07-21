@@ -39,7 +39,7 @@
                                         <strong class="card-title">Application Status</strong>
                                     </div>
                                     <div class="card-body">
-                                        <p class="card-text">Your application has been sent. Please wait for verification before using Radia Arena Football Field Booking System. Thank you for your patience.
+                                        <p class="card-text">Your application has been sent. Please wait for verification before using BCBS Booking System. Thank you for your patience.
                                         </p>
                                     </div>
                                 </div>

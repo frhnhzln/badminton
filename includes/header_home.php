@@ -32,7 +32,7 @@
 <?php }
 else{
 
-echo "Welcome To Radia Arena";
+echo "Welcome To BCBS";
  } ?>
           </div>
         </div>
@@ -83,7 +83,7 @@ echo "Welcome To Radia Arena";
           <li><a href="indexx.php">Home</a>    </li>
           <li><a href="field-listing.php">Court</a>
           <li><a href="page.php?type=aboutus">About Us</a></li>
-          <li><a href="page.php?type=faqs">FAQs</a></li>
+          <li><a href="page.php?type=faqs">News</a></li>
           <li><a href="contact-us.php">Contact Us</a></li>
           <!-- <li><a href="signincust.php">Log In</a></li> -->
            <?php if(strlen($_SESSION['login']) == 0) { ?>

@@ -41,7 +41,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 
 
           <li><a href="page.php?type=aboutus">About Us</a></li>
-            <li><a href="page.php?type=faqs">FAQs</a></li>
+            <li><a href="page.php?type=faqs">News</a></li>
             <li><a href="page.php?type=privacy">Privacy</a></li>
           <li><a href="page.php?type=terms">Terms of use</a></li>
                <li><a href="signinadmin.php">Manager Login</a></li>
@@ -77,7 +77,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
           </div>
         </div>
         <div class="col-md-6 col-md-pull-6">
-          <p class="copy-right">Copyright &copy; 2021 Radia Arena. All Rights Reserved</p>
+          <p class="copy-right">Copyright &copy; 2026 Badminton Court Booking System</p>
         </div>
       </div>
     </div>
