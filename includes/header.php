@@ -15,7 +15,7 @@
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-envelope" aria-hidden="true"></i> </div>
               <p class="uppercase_text">Email us : </p>
-              <a href="mailto:khairil@gmail.com">khairil@gmail.com</a> </div>
+              <a href="mailto:bcbs@gmail.com">bcbs@gmail.com</a> </div>
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-phone" aria-hidden="true"></i> </div>
               <p class="uppercase_text">Call Us: </p>
